@@ -33,7 +33,7 @@ public class CreditAccountTest {
         );
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            account.setRate(-1);
+            account.getRate();
         });
     }
 
