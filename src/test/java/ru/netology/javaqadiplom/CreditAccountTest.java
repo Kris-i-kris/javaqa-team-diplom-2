@@ -26,6 +26,19 @@ public class CreditAccountTest {
 
     @Test
     public void rateLessThanZero() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                -1
+        );
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            account.setRate(-1);
+        });
+    }
+
+    @Test
+    public void rateChangedLessThanZeroCheckInMethod() {
         account.setRate(-1);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
