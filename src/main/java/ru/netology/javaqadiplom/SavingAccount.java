@@ -20,10 +20,15 @@ public class SavingAccount extends Account {
      * @param rate - неотрицательное число, ставка в процентах годовых на остаток
      */
     public SavingAccount(int initialBalance, int minBalance, int maxBalance, int rate) {
-        if (rate < 0) {
-            throw new IllegalArgumentException(
-              "Накопительная ставка не может быть отрицательной, а у вас: " + rate
-            );
+//        if (rate < 0) {
+//            throw new IllegalArgumentException(
+//              "Накопительная ставка не может быть отрицательной, а у вас: " + rate
+//            );
+//        }
+        try {
+            if (rate <= 0);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException(e);
         }
         this.balance = initialBalance;
         this.minBalance = minBalance;
