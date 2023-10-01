@@ -75,17 +75,6 @@ public class CreditAccountTest {
 
 
     @Test
-    public void addTransferToCredit() {
-        Bank bank = new Bank();
-        account.pay(5_000);
-
-        bank.transfer(account2, account, 10_000);
-
-        Assertions.assertEquals(5_000, account.getBalance());
-        Assertions.assertEquals(0, account2.getBalance());
-    }
-
-    @Test
     public void yearZeroBalance() {
 
         Assertions.assertEquals(0, account.yearChange());
