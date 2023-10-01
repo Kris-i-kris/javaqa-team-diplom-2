@@ -35,7 +35,6 @@ public class CreditAccount extends Account {
                             + initialBalance
             );
         }
-
         this.balance = initialBalance;
         this.creditLimit = creditLimit;
         this.rate = rate;
@@ -81,7 +80,7 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        balance = +amount;
+        balance += amount;
         return true;
     }
 
