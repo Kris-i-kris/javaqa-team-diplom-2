@@ -228,4 +228,15 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void percenrageShouldBeCalculated4() {
+        SavingAccount account = new SavingAccount(0, 1_000, 10_000, 10);
+
+        account.yearChange();
+        int actual = account.yearChange();
+        int expected = 0;
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
