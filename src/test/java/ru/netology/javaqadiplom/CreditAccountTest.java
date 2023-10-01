@@ -25,27 +25,25 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void rateLessThanZero() {
-        CreditAccount account = new CreditAccount(
-                0,
-                5_000,
-                -1
-        );
-
+    public void shouldThrowExceptionWhenCreatingCreditAccountWithNegativeInitialBalance() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            account.getRate();
+            new CreditAccount(-100, 5_000, 15);
         });
     }
 
     @Test
-    public void rateChangedLessThanZeroCheckInMethod() {
-        account.setRate(-1);
-
+    public void shouldThrowExceptionWhenCreatingCreditAccountWithNegativeCreditLimit() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            account.yearChange();
+            new CreditAccount(0, -5000, 15);
         });
     }
 
+    @Test
+    public void shouldThrowExceptionWhenCreatingCreditAccountWithNegativeInterestRate() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new CreditAccount(0, 5_000, -1);
+        });
+    }
 
     @Test
     public void purchaseValidBorderLimit2() {
