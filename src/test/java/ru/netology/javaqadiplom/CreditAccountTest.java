@@ -108,4 +108,19 @@ public class CreditAccountTest {
         Assertions.assertEquals(-750, account.yearChange());
 
     }
+    @Test
+    public void testYearChangeWithPositiveBalance() {
+
+        CreditAccount account = new CreditAccount(200, 5000, 15);
+        int result = account.yearChange();
+        Assertions.assertEquals(30, result);
+    }
+
+    @Test
+    public void testYearChangeWithZeroBalance() {
+
+        CreditAccount account = new CreditAccount(0, 5000, 15);
+        int result = account.yearChange();
+        Assertions.assertEquals(0, result);
+    }
 }

@@ -22,6 +22,9 @@ public class CreditAccount extends Account {
             throw new IllegalArgumentException(
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
+//            (IllegalArgumentException){
+//                System.out.println("Накопительная ставка не может быть отрицательной, а у вас: " + rate);
+//            }
         }
         if (creditLimit < 0) {
             throw new IllegalArgumentException(
@@ -57,9 +60,9 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        balance = balance + creditLimit;
-        if (amount <= balance) {
-            balance = -amount - creditLimit;
+//        balance = +creditLimit;
+        if (amount <= balance + creditLimit) {
+            balance = -amount;
             return true;
         } else {
             return false;
@@ -83,7 +86,7 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        balance = amount;
+        balance = +amount;
         return true;
     }
 
@@ -98,7 +101,11 @@ public class CreditAccount extends Account {
      */
     @Override
     public int yearChange() {
-        return balance / 100 * rate;
+        if (balance <= 0) {
+            return 0;
+        } else {
+            return balance * rate / 100;
+        }
     }
 
     public int getCreditLimit() {
