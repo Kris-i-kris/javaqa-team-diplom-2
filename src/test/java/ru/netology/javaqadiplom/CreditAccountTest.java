@@ -11,7 +11,7 @@ public class CreditAccountTest {
     );
     Account account2 = new SavingAccount(
             10_000,
-            1_000,
+            0,
             10_000,
             5
 
