@@ -42,7 +42,7 @@ public class CreditAccountTest {
         account.setRate(-1);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            account.yearChange();
+            account.getRate();
         });
     }
 
