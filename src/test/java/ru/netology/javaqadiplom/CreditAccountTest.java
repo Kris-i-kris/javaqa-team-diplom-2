@@ -113,7 +113,7 @@ public class CreditAccountTest {
 
         CreditAccount account = new CreditAccount(200, 5000, 15);
         int result = account.yearChange();
-        Assertions.assertEquals(30, result);
+        Assertions.assertEquals(0, result);
     }
 
     @Test
