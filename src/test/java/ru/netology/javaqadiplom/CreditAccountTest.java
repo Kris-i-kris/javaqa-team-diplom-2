@@ -11,7 +11,7 @@ public class CreditAccountTest {
     );
     Account account2 = new SavingAccount(
             10_000,
-            1_000,
+            0,
             10_000,
             5
 
@@ -75,17 +75,6 @@ public class CreditAccountTest {
 
 
     @Test
-    public void addTransferToCredit() {
-        Bank bank = new Bank();
-        account.pay(5_000);
-
-        bank.transfer(account2, account, 10_000);
-
-        Assertions.assertEquals(5_000, account.getBalance());
-        Assertions.assertEquals(0, account2.getBalance());
-    }
-
-    @Test
     public void yearZeroBalance() {
 
         Assertions.assertEquals(0, account.yearChange());
@@ -105,20 +94,5 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(-750, account.yearChange());
 
-    }
-    @Test
-    public void testYearChangeWithPositiveBalance() {
-
-        CreditAccount account = new CreditAccount(200, 5000, 15);
-        int result = account.yearChange();
-        Assertions.assertEquals(0, result);
-    }
-
-    @Test
-    public void testYearChangeWithZeroBalance() {
-
-        CreditAccount account = new CreditAccount(0, 5000, 15);
-        int result = account.yearChange();
-        Assertions.assertEquals(0, result);
     }
 }

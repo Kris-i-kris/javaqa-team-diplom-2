@@ -22,9 +22,6 @@ public class CreditAccount extends Account {
             throw new IllegalArgumentException(
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
-//            (IllegalArgumentException){
-//                System.out.println("Накопительная ставка не может быть отрицательной, а у вас: " + rate);
-//            }
         }
         if (creditLimit < 0) {
             throw new IllegalArgumentException(
@@ -37,7 +34,6 @@ public class CreditAccount extends Account {
                     "Должно быть сообщение об ошибке, т.к. баланс не может быть отрицательным при создании :"
                             + initialBalance
             );
-
         }
 
         this.balance = initialBalance;
@@ -60,7 +56,6 @@ public class CreditAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-//        balance = +creditLimit;
         if (amount <= balance + creditLimit) {
             balance = -amount;
             return true;
