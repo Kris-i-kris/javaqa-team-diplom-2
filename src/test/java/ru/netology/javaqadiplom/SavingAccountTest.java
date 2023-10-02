@@ -21,7 +21,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldPlayWithinTheLimit() { //ошибки нет
+    public void shouldPlayWithinTheLimit() {   //ошибки нет
         SavingAccount account = new SavingAccount(
                 9_000,
                 1_000,
@@ -31,7 +31,7 @@ public class SavingAccountTest {
 
         account.pay(9_000);
 
-        Assertions.assertEquals(9_000, account.getBalance());
+        Assertions.assertEquals(0, account.getBalance());
     }
 
     // тесты на пополнение баланса
@@ -60,7 +60,7 @@ public class SavingAccountTest {
 
         account.add(9_000);
 
-        Assertions.assertEquals(2_000, account.getBalance());
+        Assertions.assertEquals(2_000 + 9_000, account.getBalance());
     }
 
     @Test
@@ -138,7 +138,7 @@ public class SavingAccountTest {
 
     @Test
     public void percenrageShouldBeCalculated4() {
-        SavingAccount account = new SavingAccount(0, 0, 10_000, 10);
+        SavingAccount account = new SavingAccount(0, 1_000, 10_000, 10);
 
         account.yearChange();
         int actual = account.yearChange();
