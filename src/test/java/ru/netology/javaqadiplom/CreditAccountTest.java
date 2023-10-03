@@ -9,14 +9,7 @@ public class CreditAccountTest {
             5_000,
             15
     );
-    Account account2 = new SavingAccount(
-            10_000,
-            0,
-            10_000,
-            5
-
-    );
-
+   
     @Test
     public void shouldAddToPositiveBalance() {
         account.add(3_000);
