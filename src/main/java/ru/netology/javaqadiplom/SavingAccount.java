@@ -27,19 +27,51 @@ public class SavingAccount extends Account {
                     "Накопительная ставка не может быть отрицательной, а у вас: " + rate
             );
         }
+        if (initialBalance < 0) {
+            throw new IllegalArgumentException(
+                    "Начальный баланс не может быть отрицательным, а у вас: " + minBalance
+            );
+        }
+        if (minBalance < 0) {
+            throw new IllegalArgumentException(
+                    "Минимальный баланс не может быть отрицательным, а у вас: " + minBalance
+            );
+        }
+        if (maxBalance < 0) {
+            throw new IllegalArgumentException(
+                    "Максимальный баланс не может быть отрицательным, а у вас: " + maxBalance
+            );
+        }
+        if (initialBalance < minBalance) {
+            throw new IllegalArgumentException(
+                    "Баланс не может быть ниже минимального, а у вас: " + initialBalance
+            );
+        }
+        if (initialBalance > maxBalance) {
+            throw new IllegalArgumentException(
+                    "Ваш баланс  правышает максимальный баланс: " + initialBalance
+            );
+        }
+
+        if (maxBalance <= minBalance) {
+            throw new IllegalArgumentException(
+                    "Максимальный баланс должен быть бальше минимального баланса."
+            );
+        }
         this.balance = initialBalance;
         this.minBalance = minBalance;
         this.maxBalance = maxBalance;
         this.rate = rate;
     }
-    public void setRate(int rate) {
-        Account acc = new Account();
-        if (acc.getRate() <= 0) {
-            throw new IllegalArgumentException(
-                    "Накопительная ставка не может быть отрицательной, а у вас: " + rate
-            );
-        }
-    }
+//    public void setRate(int rate) {
+//        Account acc = new Account();
+//        if (acc.getRate() <= 0) {
+//            throw new IllegalArgumentException(
+//                    "Накопительная ставка не может быть отрицательной, а у вас: " + rate
+//            );
+//        }
+//    }
+
 
     /**
      * Операция оплаты с карты на указанную сумму.

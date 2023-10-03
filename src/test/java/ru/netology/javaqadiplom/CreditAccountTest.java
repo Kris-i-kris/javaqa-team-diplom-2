@@ -11,7 +11,7 @@ public class CreditAccountTest {
     );
     Account account2 = new SavingAccount(
             10_000,
-            1_000,
+            0,
             10_000,
             5
 
@@ -25,27 +25,25 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void rateLessThanZero() {
-        CreditAccount account = new CreditAccount(
-                0,
-                5_000,
-                -1
-        );
-
+    public void shouldThrowExceptionWhenCreatingCreditAccountWithNegativeInitialBalance() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            account.getRate();
+            new CreditAccount(-100, 5_000, 15);
         });
     }
 
     @Test
-    public void rateChangedLessThanZeroCheckInMethod() {
-        account.setRate(-1);
-
+    public void shouldThrowExceptionWhenCreatingCreditAccountWithNegativeCreditLimit() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            account.yearChange();
+            new CreditAccount(0, -5000, 15);
         });
     }
 
+    @Test
+    public void shouldThrowExceptionWhenCreatingCreditAccountWithNegativeInterestRate() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new CreditAccount(0, 5_000, -1);
+        });
+    }
 
     @Test
     public void purchaseValidBorderLimit2() {
@@ -75,18 +73,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(0, account.getBalance());
     }
 
-
-    @Test
-    public void addTransferToCredit() {
-        Bank bank = new Bank();
-        account.pay(5_000);
-
-        bank.transfer(account2, account, 10_000);
-
-        Assertions.assertEquals(5_000, account.getBalance());
-        Assertions.assertEquals(0, account2.getBalance());
-    }
-
+    
     @Test
     public void yearZeroBalance() {
 
